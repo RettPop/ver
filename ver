@@ -1,4 +1,16 @@
 #!/bin/bash  
+
+if [ "$1" == "" ];  then
+        printf "Get <application> version. Usage:\n\t$(basename $0) <appname>\n"
+        exit 0
+fi
+
+MY_VERSION="ver v.1.0"
+if [ "$1" == "-v" ]|| [ "$1" == "$(basename $0)" ]; then
+        echo $MY_VERSION
+        exit 0
+fi
+
 function tryVer {
     VER=$($1 $2 2>&1 /dev/null)
     if [ $? == 0 ]; then
@@ -7,7 +19,8 @@ function tryVer {
     fi 
 }
 
-OPTIONS="--version -version -v"  
+OPTIONS="--version -version -v"
+
 for v in $OPTIONS 
 do          
     tryVer $1 $v 
