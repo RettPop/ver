@@ -1,0 +1,16 @@
+#!/bin/bash  
+function tryVer {
+    VER=$($1 $2 2>&1 /dev/null)
+    if [ $? == 0 ]; then
+        echo $VER
+        exit 0
+    fi 
+}
+
+OPTIONS="--version -version -v"  
+for v in $OPTIONS 
+do          
+    tryVer $1 $v 
+done 
+
+echo "Unknown version. Try yourself"
