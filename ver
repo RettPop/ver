@@ -19,7 +19,7 @@ function tryVer {
     fi 
 }
 
-OPTIONS="--version -version -v"
+OPTIONS="--version -version -v -V"
 
 for v in $OPTIONS 
 do          
